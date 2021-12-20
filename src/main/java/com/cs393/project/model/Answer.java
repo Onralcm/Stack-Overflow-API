@@ -1,4 +1,4 @@
-package com.cs393.project.service;
+package com.cs393.project.model;
 
 import javax.persistence.*;
 import java.util.List;
