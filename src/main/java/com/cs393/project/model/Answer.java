@@ -15,9 +15,12 @@ public class Answer {
 
     private Integer voteCount;
 
+    @ManyToOne
     private Question question;
 
+    @ManyToOne
     private User owner;
 
+    // dont know this
     private List<Comment> comments;
 }

@@ -12,6 +12,7 @@ public class Comment {
 
     private String text;
 
+    @ManyToOne
     private User user;
 
     private Integer voteCount;
