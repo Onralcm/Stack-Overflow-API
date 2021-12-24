@@ -1,6 +1,7 @@
 package com.cs393.project.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,12 +12,57 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToMany
-    private List<Answer> answers;
+    private String username;
 
-    @OneToMany
-    private List<Comment> comments;
+    @Column(nullable = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Answer> answers = new ArrayList<>();
 
-    @OneToMany
-    private List<Question> questions;
+    @Column(nullable = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
+
+    @Column(nullable = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Question> questions = new ArrayList<>();
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
 }
