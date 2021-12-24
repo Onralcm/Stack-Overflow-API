@@ -12,7 +12,7 @@ import java.util.Date;
 class Cs393ApplicationTests {
 
 	@Autowired
-	UserRepository userRepository;
+	QuestionRepository questionRepository;
 
 	@Test
 	void contextLoads() {
@@ -97,9 +97,6 @@ class Cs393ApplicationTests {
 		user4.getComments().add(comment2);
 		question.getComments().add(comment2);
 
-		userRepository.save(user1);
-		userRepository.save(user2);
-		userRepository.save(user3);
-		userRepository.save(user4);
+		questionRepository.save(question);
 	}
 }
