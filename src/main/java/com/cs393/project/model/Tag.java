@@ -1,5 +1,7 @@
 package com.cs393.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class Tag {
     private String tag;
 
     @ManyToMany(mappedBy = "tags", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Question> questions = new ArrayList<>();
 
     public Integer getId() {

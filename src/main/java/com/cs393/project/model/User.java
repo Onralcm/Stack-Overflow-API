@@ -1,5 +1,7 @@
 package com.cs393.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +17,17 @@ public class User {
     private String username;
 
     @Column(nullable = true)
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Answer> answers = new ArrayList<>();
 
     @Column(nullable = true)
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     @Column(nullable = true)
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
