@@ -17,7 +17,6 @@ public class Tag {
     private String tag;
 
     @ManyToMany(mappedBy = "tags", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Question> questions = new ArrayList<>();
 
     public Integer getId() {

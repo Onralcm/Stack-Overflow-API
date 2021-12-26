@@ -16,9 +16,9 @@ public class Answer {
     @Column(length = 5000)
     private String text;
 
-    private Integer voteCount;
+    private Integer voteCount = 0;
 
-    private Date answerDate;
+    private Date answerDate = new Date();
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Question question;

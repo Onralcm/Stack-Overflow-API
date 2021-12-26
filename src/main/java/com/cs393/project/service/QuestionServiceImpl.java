@@ -1,7 +1,7 @@
 package com.cs393.project.service;
 
 import com.cs393.project.dao.AnswerPostDTO;
-import com.cs393.project.dao.CommentQuestionPostDTO;
+import com.cs393.project.dao.CommentPostDTO;
 import com.cs393.project.dao.QuestionGetDTO;
 import com.cs393.project.dao.QuestionPostDTO;
 import com.cs393.project.mappers.MapStructMapper;
@@ -46,22 +46,58 @@ public class QuestionServiceImpl implements QuestionService {
        Question question = questionRepository.save(mapStructMapper.questionPostDTOToQuestion(questionPostDTO));
         return question.getId();
     }
-
     public HashMap<String, Integer> addAnswer(Integer questionId, AnswerPostDTO answerPostDTO) {
-        // Increase answer count of the corresponding question here!
-        Answer answer = answerRepository.save(mapStructMapper.answerPostDTOtoAnswer(answerPostDTO));
+        Answer answer = mapStructMapper.answerPostDTOtoAnswer(answerPostDTO);
+        Question question = questionRepository.findById(questionId).get();
+        answer.setQuestion(question);
+        question.setAnswerCount(question.getAnswerCount()+1);
+        questionRepository.save(question);
+        answer = answerRepository.save(answer);
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("question_id", questionId);
         hashMap.put("answer_id", answer.getId());
         return hashMap;
     }
 
-    public HashMap<String, Integer> addCommentToQuestion(Integer questionId, CommentQuestionPostDTO commentQuestionPostDTO) {
-        Comment comment = commentRepository.save(mapStructMapper.commentQuestionPostDTOtoComment(commentQuestionPostDTO));
+    public HashMap<String, Integer> addCommentToQuestion(Integer questionId, CommentPostDTO commentPostDTO) {
+        Comment comment = mapStructMapper.commentQuestionPostDTOtoComment(commentPostDTO);
+        Question question = questionRepository.findById(questionId).get();
+        comment.setQuestion(question);
+        commentRepository.save(comment);
+        comment = commentRepository.save(comment);
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("question_id", questionId);
         hashMap.put("comment_id", comment.getId());
         return hashMap;
+    }
+    public HashMap<String, Integer> addCommentToAnswer(Integer answerId, CommentPostDTO commentPostDTO) {
+        Comment comment = mapStructMapper.commentQuestionPostDTOtoComment(commentPostDTO);
+        Answer answer = answerRepository.findById(answerId).get();
+        comment.setAnswer(answer);
+        commentRepository.save(comment);
+        comment = commentRepository.save(comment);
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("answer_id", answerId);
+        hashMap.put("comment_id", comment.getId());
+        return hashMap;
+    }
+    public Integer voteQuestion(Integer questionId) {
+        Question question = questionRepository.findById(questionId).get();
+        question.setVoteCount(question.getVoteCount()+1);
+        questionRepository.save(question);
+        return question.getVoteCount();
+    }
+    public Integer voteAnswer(Integer answerId) {
+        Answer answer = answerRepository.findById(answerId).get();
+        answer.setVoteCount(answer.getVoteCount()+1);
+        answerRepository.save(answer);
+        return answer.getVoteCount();
+    }
+    public Integer voteComment(Integer commentId) {
+        Comment comment = commentRepository.findById(commentId).get();
+        comment.setVoteCount(comment.getVoteCount()+1);
+        commentRepository.save(comment);
+        return comment.getVoteCount();
     }
 
 }

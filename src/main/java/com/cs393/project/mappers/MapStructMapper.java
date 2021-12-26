@@ -1,7 +1,7 @@
 package com.cs393.project.mappers;
 
 import com.cs393.project.dao.AnswerPostDTO;
-import com.cs393.project.dao.CommentQuestionPostDTO;
+import com.cs393.project.dao.CommentPostDTO;
 import com.cs393.project.dao.QuestionGetDTO;
 import com.cs393.project.dao.QuestionPostDTO;
 import com.cs393.project.model.Answer;
@@ -22,5 +22,7 @@ public interface MapStructMapper {
 
     Answer answerPostDTOtoAnswer(AnswerPostDTO answerPostDTO);
 
-    Comment commentQuestionPostDTOtoComment(CommentQuestionPostDTO commentQuestionPostDTO);
+    Comment commentQuestionPostDTOtoComment(CommentPostDTO commentPostDTO);
+
+
 }

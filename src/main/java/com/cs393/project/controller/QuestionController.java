@@ -1,7 +1,7 @@
 package com.cs393.project.controller;
 
 import com.cs393.project.dao.AnswerPostDTO;
-import com.cs393.project.dao.CommentQuestionPostDTO;
+import com.cs393.project.dao.CommentPostDTO;
 import com.cs393.project.dao.QuestionGetDTO;
 import com.cs393.project.dao.QuestionPostDTO;
 import com.cs393.project.service.QuestionService;
@@ -51,10 +51,42 @@ public class QuestionController {
     }
 
     @PostMapping("/{question-id}/comments")
-    public ResponseEntity<HashMap<String, Integer>> addCommentToQuestion(@PathVariable("question-id") int questionId, @RequestBody CommentQuestionPostDTO commentQuestionPostDTO) {
+    public ResponseEntity<HashMap<String, Integer>> addCommentToQuestion(@PathVariable("question-id") int questionId, @RequestBody CommentPostDTO commentPostDTO) {
         return new ResponseEntity<>(
-                questionService.addCommentToQuestion(questionId, commentQuestionPostDTO),
+                questionService.addCommentToQuestion(questionId, commentPostDTO),
                 HttpStatus.CREATED
+        );
+    }
+
+    @PostMapping("/{question-id}/answers/{answer-id}/comments")
+    public ResponseEntity<HashMap<String, Integer>> addCommentToAnswer(@PathVariable("answer-id") int answerId, @RequestBody CommentPostDTO commentPostDTO) {
+        return new ResponseEntity<>(
+                questionService.addCommentToAnswer(answerId, commentPostDTO),
+                HttpStatus.CREATED
+        );
+    }
+
+    @PutMapping("/{question-id}")
+    public ResponseEntity<Integer> votingQuestion(@PathVariable("question-id") Integer questionId) {
+        return new ResponseEntity<>(
+                questionService.voteQuestion(questionId),
+                HttpStatus.OK
+        );
+    }
+
+    @PutMapping("/answers/{answer-id}")
+    public ResponseEntity<Integer> votingAnswer(@PathVariable("answer-id") Integer answerId) {
+        return new ResponseEntity<>(
+                questionService.voteAnswer(answerId),
+                HttpStatus.OK
+        );
+    }
+
+    @PutMapping("/comments/{comment-id}")
+    public ResponseEntity<Integer> votingComment(@PathVariable("comment-id") Integer commentId) {
+        return new ResponseEntity<>(
+                questionService.voteComment(commentId),
+                HttpStatus.OK
         );
     }
 

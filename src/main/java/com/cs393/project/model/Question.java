@@ -21,7 +21,7 @@ public class Question {
     @Column(length = 5000)
     private String description;
 
-    private Date askedDate;
+    private Date askedDate = new Date();
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "REL_QUESTION_TAG",
@@ -36,9 +36,9 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answers = new ArrayList<>();
 
-    private Integer answerCount;
+    private Integer answerCount = 0;
 
-    private Integer voteCount;
+    private Integer voteCount = 0;
 
     @Column(nullable = true)
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)

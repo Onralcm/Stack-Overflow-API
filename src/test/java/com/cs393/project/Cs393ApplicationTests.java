@@ -27,6 +27,7 @@ class Cs393ApplicationTests {
 		question.setVoteCount(378);
 		question.setAnswerCount(18);
 
+
 		Tag tag1 = new Tag();
 		tag1.setTag("spring-boot");
 
@@ -85,6 +86,7 @@ class Cs393ApplicationTests {
 				"So debug=true would do it I think. That flag is a little bit special because the logging has to be " +
 				"initialized very early, but I think that would work.");
 		comment1.setCommentDate(new Date());
+		comment1.setVoteCount(13);
 		user3.getComments().add(comment1);
 		answer.getComments().add(comment1);
 		Comment comment2 = new Comment();
@@ -94,6 +96,7 @@ class Cs393ApplicationTests {
 				"to the desired level (INFO, ERROR, DEBUG).");
 		comment2.setCommentDate(new Date());
 		comment2.setUser(user4);
+		comment2.setVoteCount(31);
 		user4.getComments().add(comment2);
 		question.getComments().add(comment2);
 

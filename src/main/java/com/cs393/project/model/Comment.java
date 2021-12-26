@@ -14,7 +14,9 @@ public class Comment {
     @Column(length = 5000)
     private String text;
 
-    private Date commentDate;
+    private Date commentDate = new Date();
+
+    private Integer voteCount = 0;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
@@ -71,5 +73,13 @@ public class Comment {
 
     public void setCommentDate(Date commentDate) {
         this.commentDate = commentDate;
+    }
+
+   public Integer getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
     }
 }
