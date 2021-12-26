@@ -1,14 +1,16 @@
 package com.cs393.project.controller;
 
+import com.cs393.project.dao.AnswerPostDTO;
+import com.cs393.project.dao.CommentQuestionPostDTO;
 import com.cs393.project.dao.QuestionGetDTO;
 import com.cs393.project.dao.QuestionPostDTO;
-import com.cs393.project.model.Question;
 import com.cs393.project.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -39,6 +41,24 @@ public class QuestionController {
                  HttpStatus.CREATED
                );
     }
+
+    @PostMapping("/{question-id}/answers")
+    public ResponseEntity<HashMap<String, Integer>> addAnswerToQuestion(@PathVariable("question-id") int questionId, @RequestBody AnswerPostDTO answerPostDTO) {
+        return new ResponseEntity<>(
+                questionService.addAnswer(questionId, answerPostDTO),
+                HttpStatus.CREATED
+        );
+    }
+
+    @PostMapping("/{question-id}/comments")
+    public ResponseEntity<HashMap<String, Integer>> addCommentToQuestion(@PathVariable("question-id") int questionId, @RequestBody CommentQuestionPostDTO commentQuestionPostDTO) {
+        return new ResponseEntity<>(
+                questionService.addCommentToQuestion(questionId, commentQuestionPostDTO),
+                HttpStatus.CREATED
+        );
+    }
+
+
 
 
 
