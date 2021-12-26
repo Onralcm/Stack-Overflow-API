@@ -16,16 +16,13 @@ public class User {
 
     private String username;
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Question> questions = new ArrayList<>();
 
     public String getUsername() {

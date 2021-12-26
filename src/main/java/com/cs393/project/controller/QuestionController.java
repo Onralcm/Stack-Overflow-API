@@ -4,6 +4,8 @@ import com.cs393.project.dao.AnswerPostDTO;
 import com.cs393.project.dao.CommentPostDTO;
 import com.cs393.project.dao.QuestionGetDTO;
 import com.cs393.project.dao.QuestionPostDTO;
+import com.cs393.project.model.Answer;
+import com.cs393.project.model.Comment;
 import com.cs393.project.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +35,7 @@ public class QuestionController {
                 HttpStatus.OK
         );
     }
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Integer> addQuestion(@RequestBody QuestionPostDTO questionPostDTO)
     {
                return new ResponseEntity<>(
@@ -90,9 +92,27 @@ public class QuestionController {
         );
     }
 
+    @DeleteMapping("/comments/{comment-id}")
+    public ResponseEntity<Integer> deleteComment(@PathVariable("comment-id") Integer commentId) {
+        return new ResponseEntity<>(
+                questionService.deleteComment(commentId),
+                HttpStatus.OK
+        );
+    }
 
+    @PutMapping("/answers/update/{answer-id}")
+    public ResponseEntity<Integer> updateAnswer(@PathVariable("answer-id") Integer answerId, @RequestBody Answer answerText) {
+        return new ResponseEntity<>(
+                questionService.updateAnswer(answerId, answerText),
+                HttpStatus.OK
+        );
+    }
 
-
-
-
+    @PutMapping("/comments/update/{comment-id}")
+    public ResponseEntity<Integer> updateComment(@PathVariable("comment-id") Integer commentId, @RequestBody Comment commentText) {
+        return new ResponseEntity<>(
+                questionService.updateComment(commentId, commentText),
+                HttpStatus.OK
+        );
+    }
 }

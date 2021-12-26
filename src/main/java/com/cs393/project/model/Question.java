@@ -23,25 +23,23 @@ public class Question {
 
     private Date askedDate = new Date();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "REL_QUESTION_TAG",
     joinColumns = @JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID"),
     inverseJoinColumns = @JoinColumn(name = "TAG_ID", referencedColumnName = "ID"))
     private List<Tag> tags = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question")
     private List<Answer> answers = new ArrayList<>();
 
     private Integer answerCount = 0;
 
     private Integer voteCount = 0;
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question")
     private List<Comment> comments = new ArrayList<>();
 
     public Integer getId() {

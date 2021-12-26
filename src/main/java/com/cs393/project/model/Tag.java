@@ -16,7 +16,7 @@ public class Tag {
 
     private String tag;
 
-    @ManyToMany(mappedBy = "tags", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "tags")
     private List<Question> questions = new ArrayList<>();
 
     public Integer getId() {

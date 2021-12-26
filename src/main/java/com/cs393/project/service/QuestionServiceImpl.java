@@ -8,12 +8,14 @@ import com.cs393.project.mappers.MapStructMapper;
 import com.cs393.project.model.Answer;
 import com.cs393.project.model.Comment;
 import com.cs393.project.model.Question;
+import com.cs393.project.model.User;
 import com.cs393.project.repository.AnswerRepository;
 import com.cs393.project.repository.CommentRepository;
 import com.cs393.project.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,7 +45,7 @@ public class QuestionServiceImpl implements QuestionService {
         return mapStructMapper.questionToQuestionGetDTO(questionRepository.findById(questionId).get());
     }
     public Integer addQuestion(QuestionPostDTO questionPostDTO) {
-       Question question = questionRepository.save(mapStructMapper.questionPostDTOToQuestion(questionPostDTO));
+        Question question = questionRepository.save(mapStructMapper.questionPostDTOToQuestion(questionPostDTO));
         return question.getId();
     }
     public HashMap<String, Integer> addAnswer(Integer questionId, AnswerPostDTO answerPostDTO) {
@@ -99,5 +101,30 @@ public class QuestionServiceImpl implements QuestionService {
         commentRepository.save(comment);
         return comment.getVoteCount();
     }
-
+    @Transactional
+    public Integer deleteComment(Integer commentId) {
+        Comment comment = commentRepository.getById(commentId);
+        Question question = comment.getQuestion();
+        Answer answer = comment.getAnswer();
+        User user = comment.getUser();
+        if(question != null)
+            question.getComments().remove(comment);
+        if(question != null)
+            answer.getComments().remove(comment);
+        user.getComments().remove(comment);
+        commentRepository.delete(comment);
+        return 1;
+    }
+    public Integer updateAnswer(Integer answerId, Answer answerText) {
+        Answer answer = answerRepository.findById(answerId).get();
+        answer.setText(answerText.getText());
+        answerRepository.save(answer);
+        return 1;
+    }
+    public Integer updateComment(Integer commentId, Comment commentText) {
+        Comment comment = commentRepository.findById(commentId).get();
+        comment.setText(commentText.getText());
+        commentRepository.save(comment);
+        return 1;
+    }
 }

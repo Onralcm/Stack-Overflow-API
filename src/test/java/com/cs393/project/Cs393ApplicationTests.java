@@ -12,7 +12,15 @@ import java.util.Date;
 class Cs393ApplicationTests {
 
 	@Autowired
+	AnswerRepository answerRepository;
+	@Autowired
+	CommentRepository commentRepository;
+	@Autowired
 	QuestionRepository questionRepository;
+	@Autowired
+	TagRepository tagRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	@Test
 	void contextLoads() {
@@ -100,6 +108,15 @@ class Cs393ApplicationTests {
 		user4.getComments().add(comment2);
 		question.getComments().add(comment2);
 
+		tagRepository.save(tag1);
+		tagRepository.save(tag2);
+		userRepository.save(user1);
+		userRepository.save(user2);
+		userRepository.save(user3);
+		userRepository.save(user4);
 		questionRepository.save(question);
+		answerRepository.save(answer);
+		commentRepository.save(comment1);
+		commentRepository.save(comment2);
 	}
 }

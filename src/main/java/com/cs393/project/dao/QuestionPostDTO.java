@@ -17,10 +17,10 @@ public class QuestionPostDTO {
     private String description;
 
     @JsonProperty("tags")
-    private List<Tag> tags;
+    private List<TagGetDTO> tags;
 
     @JsonProperty("user")
-    private User user;
+    private UserGetDTO user;
 
     public String getTitle() {
         return title;
@@ -38,20 +38,19 @@ public class QuestionPostDTO {
         this.description = description;
     }
 
-    public List<Tag> getTags() {
+    public List<TagGetDTO> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tag> tags) {
+    public void setTags(List<TagGetDTO> tags) {
         this.tags = tags;
     }
 
-    public User getUser() {
+    public UserGetDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserGetDTO user) {
         this.user = user;
     }
-
 }

@@ -20,14 +20,13 @@ public class Answer {
 
     private Date answerDate = new Date();
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Question question;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
 
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "answer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "answer")
     private List<Comment> comments = new ArrayList<>();
 
     public Integer getId() {

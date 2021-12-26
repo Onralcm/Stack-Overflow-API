@@ -1,5 +1,6 @@
 package com.cs393.project.dao;
 
+import com.cs393.project.mappers.MapStructMapper;
 import com.cs393.project.model.Tag;
 import com.cs393.project.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,13 +16,13 @@ public class QuestionGetDTO {
     private String description;
 
     @JsonProperty("tags")
-    private List<Tag> tags;
+    private List<TagGetDTO> tags;
 
     @JsonProperty("askedDate")
     private Date askedDate;
 
     @JsonProperty("user")
-    private User user;
+    private UserGetDTO user;
 
     @JsonProperty("answerCount")
     private Integer answerCount;
@@ -42,14 +43,17 @@ public class QuestionGetDTO {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        if(description.length() > 100)
+            this.description = description.substring(0,100);
+        else
+            this.description = description;
     }
 
-    public List<Tag> getTags() {
+    public List<TagGetDTO> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tag> tags) {
+    public void setTags(List<TagGetDTO> tags) {
         this.tags = tags;
     }
 
@@ -61,11 +65,9 @@ public class QuestionGetDTO {
         this.askedDate = askedDate;
     }
 
-    public User getUser() {
-        return user;
-    }
+    public UserGetDTO getUser() { return user; }
 
-    public void setUser(User user) {
+    public void setUser(UserGetDTO user) {
         this.user = user;
     }
 

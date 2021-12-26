@@ -18,13 +18,13 @@ public class Comment {
 
     private Integer voteCount = 0;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Question question;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Answer answer;
 
     public Integer getId() {
