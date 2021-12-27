@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface QuestionService {
     List<QuestionGetDTO> getQuestions();
+    List<QuestionGetDTO> getQuestionsFromTags(List<String> tags);
     QuestionGetDTO getQuestion(int questionId);
     Integer addQuestion(QuestionPostDTO questionPostDTO);
     HashMap<String, Integer> addAnswer(Integer questionId, AnswerPostDTO answerPostDTO);

@@ -1,7 +1,5 @@
 package com.cs393.project.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,10 +42,6 @@ public class Question {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -94,10 +88,6 @@ public class Question {
         return answers;
     }
 
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
-
     public Integer getAnswerCount() {
         return answerCount;
     }
@@ -116,9 +106,5 @@ public class Question {
 
     public List<Comment> getComments() {
         return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 }

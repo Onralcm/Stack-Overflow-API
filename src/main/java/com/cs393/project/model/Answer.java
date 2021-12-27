@@ -33,10 +33,6 @@ public class Answer {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getText() {
         return text;
     }
@@ -51,10 +47,6 @@ public class Answer {
 
     public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
-    }
-
-    public Date getAnswerDate() {
-        return answerDate;
     }
 
     public void setAnswerDate(Date answerDate) {
@@ -79,9 +71,5 @@ public class Answer {
 
     public List<Comment> getComments() {
         return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 }

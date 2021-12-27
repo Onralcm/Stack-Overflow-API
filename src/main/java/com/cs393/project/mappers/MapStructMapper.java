@@ -4,7 +4,6 @@ import com.cs393.project.dao.*;
 import com.cs393.project.model.Answer;
 import com.cs393.project.model.Comment;
 import com.cs393.project.model.Question;
-import com.cs393.project.model.User;
 import org.mapstruct.Mapper;
 
 import java.util.List;

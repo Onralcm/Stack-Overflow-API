@@ -31,10 +31,6 @@ public class Comment {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getText() {
         return text;
     }
@@ -65,10 +61,6 @@ public class Comment {
 
     public void setAnswer(Answer answer) {
         this.answer = answer;
-    }
-
-    public Date getCommentDate() {
-        return commentDate;
     }
 
     public void setCommentDate(Date commentDate) {

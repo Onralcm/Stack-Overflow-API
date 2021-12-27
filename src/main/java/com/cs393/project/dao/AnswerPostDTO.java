@@ -15,10 +15,6 @@ public class AnswerPostDTO {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public User getUser() {
         return user;
     }

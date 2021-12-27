@@ -28,7 +28,14 @@ public class QuestionController {
                 HttpStatus.OK
         );
     }
-    @GetMapping(path = "/{id}")
+    @GetMapping("/fromTags")
+    public ResponseEntity<List<QuestionGetDTO>> getAllFromTags(@RequestBody List<String> tags){
+        return new ResponseEntity<>(
+                questionService.getQuestionsFromTags(tags),
+                HttpStatus.OK
+        );
+    }
+    @GetMapping( "/{id}")
     public ResponseEntity<QuestionGetDTO> getByID(@PathVariable("id") int questionId) {
         return new ResponseEntity<>(
                 questionService.getQuestion(questionId),

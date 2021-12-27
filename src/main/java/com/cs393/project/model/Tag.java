@@ -1,7 +1,5 @@
 package com.cs393.project.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +35,5 @@ public class Tag {
 
     public List<Question> getQuestions() {
         return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
     }
 }

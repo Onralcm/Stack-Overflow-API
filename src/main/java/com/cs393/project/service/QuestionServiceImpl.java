@@ -5,10 +5,7 @@ import com.cs393.project.dao.CommentPostDTO;
 import com.cs393.project.dao.QuestionGetDTO;
 import com.cs393.project.dao.QuestionPostDTO;
 import com.cs393.project.mappers.MapStructMapper;
-import com.cs393.project.model.Answer;
-import com.cs393.project.model.Comment;
-import com.cs393.project.model.Question;
-import com.cs393.project.model.User;
+import com.cs393.project.model.*;
 import com.cs393.project.repository.AnswerRepository;
 import com.cs393.project.repository.CommentRepository;
 import com.cs393.project.repository.QuestionRepository;
@@ -40,6 +37,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     public List<QuestionGetDTO> getQuestions() {
         return mapStructMapper.questionsToQuestionsGetDTO(questionRepository.findAll());
+    }
+    public List<QuestionGetDTO> getQuestionsFromTags(List<String> tags){
+        return mapStructMapper.questionsToQuestionsGetDTO(questionRepository.findAllFromTags(tags));
     }
     public QuestionGetDTO getQuestion(int questionId) {
         return mapStructMapper.questionToQuestionGetDTO(questionRepository.findById(questionId).get());
