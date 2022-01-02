@@ -28,13 +28,15 @@ public class QuestionController {
                 HttpStatus.OK
         );
     }
-    @GetMapping("/fromTags")
-    public ResponseEntity<List<QuestionGetDTO>> getAllFromTags(@RequestBody List<String> tags){
+
+    @GetMapping("/fromTags/{tags}")
+    public ResponseEntity<List<QuestionGetDTO>> getAllFromTags(@PathVariable List<String> tags){
         return new ResponseEntity<>(
                 questionService.getQuestionsFromTags(tags),
                 HttpStatus.OK
         );
     }
+
     @GetMapping( "/{id}")
     public ResponseEntity<QuestionGetDTO> getByID(@PathVariable("id") int questionId) {
         return new ResponseEntity<>(
@@ -42,6 +44,7 @@ public class QuestionController {
                 HttpStatus.OK
         );
     }
+
     @PostMapping
     public ResponseEntity<Integer> addQuestion(@RequestBody QuestionPostDTO questionPostDTO)
     {
@@ -83,7 +86,7 @@ public class QuestionController {
         );
     }
 
-    @PutMapping("/answers/{answer-id}")
+    @PutMapping("/{question-id}/answers/{answer-id}")
     public ResponseEntity<Integer> votingAnswer(@PathVariable("answer-id") Integer answerId) {
         return new ResponseEntity<>(
                 questionService.voteAnswer(answerId),
@@ -108,7 +111,7 @@ public class QuestionController {
     }
 
     @PutMapping("/answers/update/{answer-id}")
-    public ResponseEntity<Integer> updateAnswer(@PathVariable("answer-id") Integer answerId, @RequestBody Answer answerText) {
+    public ResponseEntity<Integer> updateAnswer(@PathVariable("answer-id") Integer answerId, @RequestBody String answerText) {
         return new ResponseEntity<>(
                 questionService.updateAnswer(answerId, answerText),
                 HttpStatus.OK
@@ -116,7 +119,7 @@ public class QuestionController {
     }
 
     @PutMapping("/comments/update/{comment-id}")
-    public ResponseEntity<Integer> updateComment(@PathVariable("comment-id") Integer commentId, @RequestBody Comment commentText) {
+    public ResponseEntity<Integer> updateComment(@PathVariable("comment-id") Integer commentId, @RequestBody String commentText) {
         return new ResponseEntity<>(
                 questionService.updateComment(commentId, commentText),
                 HttpStatus.OK

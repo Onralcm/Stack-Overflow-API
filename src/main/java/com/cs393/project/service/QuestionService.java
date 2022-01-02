@@ -22,6 +22,6 @@ public interface QuestionService {
     Integer voteAnswer(Integer answerId);
     Integer voteComment(Integer commentId);
     Integer deleteComment(Integer commentId);
-    Integer updateAnswer(Integer answerId, Answer answerText);
-    Integer updateComment(Integer commentId, Comment commentText);
+    Integer updateAnswer(Integer answerId, String answerText);
+    Integer updateComment(Integer commentId, String commentText);
 }

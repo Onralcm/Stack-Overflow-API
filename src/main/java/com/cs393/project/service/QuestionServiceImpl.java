@@ -115,15 +115,15 @@ public class QuestionServiceImpl implements QuestionService {
         commentRepository.delete(comment);
         return 1;
     }
-    public Integer updateAnswer(Integer answerId, Answer answerText) {
+    public Integer updateAnswer(Integer answerId, String answerText) {
         Answer answer = answerRepository.findById(answerId).get();
-        answer.setText(answerText.getText());
+        answer.setText(answerText);
         answerRepository.save(answer);
         return 1;
     }
-    public Integer updateComment(Integer commentId, Comment commentText) {
+    public Integer updateComment(Integer commentId, String commentText) {
         Comment comment = commentRepository.findById(commentId).get();
-        comment.setText(commentText.getText());
+        comment.setText(commentText);
         commentRepository.save(comment);
         return 1;
     }
