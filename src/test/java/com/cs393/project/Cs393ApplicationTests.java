@@ -31,7 +31,6 @@ class Cs393ApplicationTests {
 				"\n" +
 				"How can I set the logging level with application.properties?\n" +
 				"And logging file location, etc?");
-		question.setAskedDate(new Date());
 		question.setVoteCount(378);
 		question.setAnswerCount(18);
 
@@ -76,7 +75,6 @@ class Cs393ApplicationTests {
 				"you can simply include in your logback.xml file. (This is also recommended from the default logback.xml in Spring Boot.\n" +
 				"\n" +
 				"<include resource=\"org/springframework/boot/logging/logback/base.xml\"/>");
-		answer.setAnswerDate(new Date());
 		answer.setVoteCount(428);
 
 		question.getAnswers().add(answer);

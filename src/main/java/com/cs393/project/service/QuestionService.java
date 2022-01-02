@@ -1,11 +1,9 @@
 package com.cs393.project.service;
 
-import com.cs393.project.dao.AnswerPostDTO;
-import com.cs393.project.dao.CommentPostDTO;
-import com.cs393.project.dao.QuestionGetDTO;
-import com.cs393.project.dao.QuestionPostDTO;
-import com.cs393.project.model.Answer;
-import com.cs393.project.model.Comment;
+import com.cs393.project.model.dto.AnswerPostDTO;
+import com.cs393.project.model.dto.CommentPostDTO;
+import com.cs393.project.model.dto.QuestionGetDTO;
+import com.cs393.project.model.dto.QuestionPostDTO;
 
 import java.util.HashMap;
 import java.util.List;

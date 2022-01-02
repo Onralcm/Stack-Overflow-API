@@ -1,6 +1,6 @@
 package com.cs393.project.mappers;
 
-import com.cs393.project.dao.*;
+import com.cs393.project.model.dto.*;
 import com.cs393.project.model.Answer;
 import com.cs393.project.model.Comment;
 import com.cs393.project.model.Question;

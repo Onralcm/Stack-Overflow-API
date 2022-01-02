@@ -19,6 +19,7 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.5.12'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 

@@ -1,4 +1,4 @@
-package com.cs393.project.dao;
+package com.cs393.project.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;

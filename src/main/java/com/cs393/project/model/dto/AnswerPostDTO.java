@@ -1,4 +1,4 @@
-package com.cs393.project.dao;
+package com.cs393.project.model.dto;
 
 import com.cs393.project.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
